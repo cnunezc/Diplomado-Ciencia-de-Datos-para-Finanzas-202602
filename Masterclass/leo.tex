@@ -1,0 +1,510 @@
+\documentclass[9pt,handout]{beamer}
+\usepackage[orientation=landscape,size=custom,width=16,height=9,scale=0.35,debug]{beamerposter} 
+\usepackage[spanish]{babel}
+\usetheme{Boadilla}
+\usepackage{hyperref}
+
+\author[]{\texorpdfstring{Leonardo Besoaín }{Author}}
+\title{Estadística I}
+%\setbeamercovered{transparent} 
+%\logo{} 
+%\institute{Facultad de Economía y Negocios\\Universidad de Chile} 
+\date{} 
+\subtitle{Clase sincrónica 2}
+\setbeamertemplate{navigation symbols}{} 
+\titlegraphic{\includegraphics[width=1.0cm]{escudo-uchile}}
+
+\begin{document}
+
+%%%Portada%%%
+\begin{frame}
+\titlepage
+\end{frame}
+%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Las apuestas de Bacanes}
+\justifying
+Bacanes es una página web de apuestas
+que 
+ asigna
+números entre 0 y 1 a una gran cantidad
+de eventos. 
+
+\bigskip 
+
+Estos números se conocen
+como ``probabilidades bacanes'' y, para
+un evento $A$ determinado,  se denota
+por ${\rm P}_{\rm bacanes}(A)$. 
+
+\bigskip
+
+Para cualquier evento $A$ al que
+asigna una probabilidad, 
+Bacanes está dispuesta tanto a comprar
+como a vender, a un precio de \$1000$\cdot{\rm P}_{\rm bacanes}(A)$,
+el certificado siguiente:
+
+\bigskip
+
+\begin{center}
+\fbox{\begin{minipage}{25em}
+El dueño de este certificado puede cobrar \$1000 si ocurre $A$. 
+Este certificado no tiene valor alguno si no ocurre $A$. 
+% Este certificado no tiene fecha de expiración.
+\end{minipage}}
+\end{center}    
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Caso 1: Bacanes no cree que $\Pr(A^c)=1-\Pr(A)$}
+
+Para fijar ideas, suponga que Bacanes
+cree que
+\begin{equation}
+\label{eq:Bacanes.1}
+\Pr(A) + \Pr(A^c) < 1.
+\end{equation}
+
+\bigskip
+
+Ud.\ compra un certificado de $A$ y otro de $A^c$. 
+
+\begin{itemize}
+\item Ud.\ paga: $\Pr(A)+\Pr(A^c)$ que es menos que \$1000 y 
+recibe \$1000 con certeza. 
+\item Su ganancia neta es: $\$1000[1-\Pr(A)-\Pr(A^c)] > 0$. 
+\item Como puede realizar esta operación el número de veces que desee, puede llevar a Bacanes a la quiebra.
+\end{itemize}
+
+\bigskip
+
+\alert{Intuición}: 
+\begin{itemize}
+\item La ecuación \eqref{eq:Bacanes.1} dice
+que $A$ y $A^c$ están ``baratos'', luego
+compro ambos. 
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Caso 1: Bacanes no cree que $\Pr(A^c)=1-\Pr(A)$}
+
+Consideremos ahora el caso en que Bacanes cree que
+\[
+\Pr(A) + \Pr(A^c) > 1.
+\]
+En este caso, Ud.\ le vende certificados por $A$ y $A^c$ a Bacanes
+y, por un argumento análogo, tiene una ganancia garantizada
+de $\$1000[\Pr(A)+\Pr(A^c)-1]>0$. 
+
+\bigskip
+
+Como se puede vender/comprar cuantos certificados
+se desee, es posible llevar a Bacanes a la quiebra. 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Caso 2: Bacanes no cree que $\Pr(A\cap B)\leq\Pr(A)$}
+
+Bacanes cree que 
+\[
+\Pr(A) < \Pr(A\cap B),
+\]
+lo cual sabemos es imposible (?`se acuerda de Sofía?). 
+
+\bigskip
+
+Ud.\ compra un certificado de $A$ y vende uno de $A\cap B$. 
+
+\bigskip
+
+Tres resultados posibles (lo clave es que si sucede
+$A\cap B$ entonces necesariamente sucede $A$):
+
+\begin{center}
+\begin{tabular}{l cccc}
+\toprule
+\multicolumn{2}{c}{Eventos que suceden}  & Ingresos        por                      & Ingresos          por            & Ganancia         \\
+$A$  & $B$                                       & compraventa certificados   & eventos que suceden  & neta      \\
+\midrule
+No    & No                                                   & $1000[\Pr(A\cap B)-\Pr(A)]$ & 0        & $1000[\Pr(A\cap B)-\Pr(A)]$\\
+Si      & No                                                  & $1000[\Pr(A\cap B)-\Pr(A)]$ & 1000  & $1000[1+\Pr(A\cap B)-\Pr(A)]$\\
+Si      & Si                                                    & $1000[\Pr(A\cap B)-\Pr(A)]$ & 0        & $1000[\Pr(A\cap B)-\Pr(A)]$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+
+Luego la combinación anterior lleva a una ganancia segura de al menos
+$1000(\Pr(A\cap B)-\Pr(A))>0$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Caso 3: Bacanes no cree en el Axioma de Aditividad}
+Sean $A$ y $B$ eventos disjuntos donde Bacanes cree que:
+\[
+\Pr(A\cup B) < \Pr(A) + \Pr(B). 
+\]
+
+\bigskip 
+
+Entonces Ud.\ compra $A\cup B$ y vende
+$A$ y $B$. Nuevamente, compra lo barato y vende lo caro.
+
+\bigskip
+
+La tabla que sigue resume por qué esta estrategia lleva a la quiebra de Bacanes. 
+Lo clave es que, como $A$ y $B$ son disjuntos, si sucede uno no puede suceder el otro.
+
+\begin{center}
+% \begin{small}
+\begin{tabular}{l cccc}
+\resizebox{\textwidth}{!}{
+\toprule
+\multicolumn{2}{c}{Eventos que suceden}  & Ingresos      por                        & Ingresos        por              & Ganancia         \\
+$A$  & $B$                                       & compraventa certificados   & eventos que suceden  & neta      \\
+\midrule
+Si    & No                                                   & $1000[\Pr(A)+\Pr(B)-\Pr(A\cup B)]$ & 0  & $1000[\Pr(A)+\Pr(B) - \Pr(A\cup B)]$\\
+No   & Si                                                  &   $1000[\Pr(A)+\Pr(B)-\Pr(A\cup B)]$ & 0  & $1000[\Pr(A)+\Pr(B) - \Pr(A\cup B)$\\ 
+No   & No                                                   & $1000[\Pr(A)+\Pr(B)-\Pr(A\cup B)]$ & 0 &  $1000[\Pr(A)+\Pr(B) - \Pr(A\cup B)]$\\
+\bottomrule
+}
+\end{tabular}
+% \end{small}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{}
+
+Luego la combinación anterior lleva a una ganancia segura de 
+ $1000[\Pr(A)+\Pr(B) - \Pr(A\cup B)]$. 
+ 
+ \bigskip
+ 
+ Y como la combinación de compraventas se puede realizar
+ muchas veces, usted puede llevar a Bacanes a la quiebra. 
+ 
+ \bigskip
+ 
+ Suponga ahora que Bacanes cree que
+ \[
+\Pr(A\cup B) > \Pr(A) + \Pr(B). 
+\]
+
+\bigskip
+
+?`Cuál es la combinación de compra y venta de certificados
+que lleva a Bacanes a la quiebra?
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Caso 4: Bacanes no cree que $\Pr(A\cup B) = \Pr(a)+\Pr(B)-\Pr(A\cap B)$}
+\begin{center}
+{\Huge Se deja propuesto, solo para valientes. }
+\end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{La paradoja de las votaciones}
+
+En su clásico libro de 1957, \emph{A Theory of Democracy}, 
+con más de 30 mil citas en Google Scholar, John Downs
+realiza un análisis racional de si uno debiera ir a votar o no. 
+
+\begin{itemize}
+\item Costo de ir a votar: $C>0$. Toma tiempo, gasto en locomoción, etc. 
+\item Beneficio de ir a votar: Si mi voto decide la elección gano $B$,
+    en caso contrario no gano nada.
+\item Denotando por $p$
+    la probabilidad de que mi voto decida la elección, un análisis 
+    costo-beneficio de ir a votar me lleva a ir si y solo si
+    \[
+    pB - C > 0.
+    \]
+    Donde estamos usando un concepto que no hemos visto
+    aun, el de ``ganancia esperada''. No obstante lo anterior, 
+    es intuitivamente obvio que si uno toma la decisión
+    de ir a votar de manera racional uno irá si y solo si
+    la probabilidad de que el voto de uno sea decisivo
+    es suficientemente alta. 
+\end{itemize} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Aplicación: Influencia máxima}
+
+Veremos a continuación que en la mayoría
+de las elecciones la probabilidad de ser
+la votante que decide la elección (votante
+\alert{pivotal}) es muy baja, de modo que
+una análisis costo-beneficio indica
+que la gente no debiera ir a votar
+en países donde el voto es voluntario. 
+
+                    \bigskip
+          
+          Esto se conoce como
+          la ``paradoja
+          de las votaciones''
+          o ``paradoja de Downs''.
+          
+          \bigskip
+          
+          A continuación calculamos la probabilidad
+          de que un voto sea pivotal, aplicando 
+          los resultados de conteo que vimos en el Video 4.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Se pasa a una pregunta precisa}
+Los votantes eligen entre dos candidatos A y B. 
+                   La probabilidad que cada uno de ellos
+                   vote por A es 0,5 y la probabilidad
+                   que voten por B también es 0,5. 
+                   Es decir, suponemos que no hay votos nulos o blancos y
+                   todos quienes votan lo hacen por A o B.
+                   
+                   \bigskip
+                   
+                   También suponemos que 
+                   cada votante decide sin que 
+                   le importe cómo votan los demás. 
+De manera un tanto
+                   informal, podemos decir que los votantes
+                   deciden independientemente una de otra. 
+
+\bigskip
+          
+          Determine la probabilidad de que el voto
+          de cada votante sea pivotal si votan:
+          \begin{enumerate}
+          \item 11 electores. 
+          \item 101 electores. 
+          \item 1.001 electores
+          \item 10.001 electores
+          \item 100.001 electores.
+          \item 1.000.001 electores. 
+          \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solución}
+
+Partimos con el caso de 11 electores,  
+usted y 10 electores más, y determinamos
+la probabilidad de que usted sea la votante pivotal.
+
+\bigskip
+
+Representamos el resultado de la votación
+por una 11-tupla ordenada con As y Bs, 
+donde la $i$-ésima coordenada indica
+por quién votó la $i$-ésima electora. 
+
+\bigskip
+
+Clave: Suponemos que todas las 11-tuplas son igualmente
+probables. Este supuesto se basa en que
+
+\begin{itemize}
+\item La probabilidad de votar por A o B es la misma.
+\item Los votos de una electora no dependen del voto del resto.
+\end{itemize}
+
+\bigskip
+
+Luego calcular la probabilidad que nos piden
+es calcular casos favorables y casos posibles. 
+\end{frame}
+
+\begin{frame}
+\frametitle{}
+
+Consideramos las 10 votantes distintas a usted. 
+
+\bigskip
+
+Ud.\ será la votante pivotal si y solo si
+hay 5 votos para A y 5 votos para B.
+
+\bigskip
+
+Luego:
+
+\begin{itemize}
+\item Espacio muestral: 10-tuplas ordenadas con As  y Bs.
+\item Casos posibles: $2^{10}$. Cada votante puede votar A o B. 
+\item Casos favorables: $\binom{10}{5}$. Número de formas
+en que se determinan las 5 coordenadas (de la 10-tupla
+ordenada) que votan por A. Una vez determinados,
+también quedan determinadas las coordenadas
+con los votos de B.
+\end{itemize}
+
+\bigskip
+
+En lo que sigue dentamos por $p_n$ la probabilidad
+de ser la votante pivotal cuando votan $n$ personas. 
+
+\bigskip
+
+El raciocinio anterior muestra que:
+\[
+p_{11} = \frac{\binom{10}{5}}{2^{10}} \simeq 0,246..
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{}
+
+Sin $n=2k+1$ es impar, el mismo raciocinio anterior
+muestra que:
+\[
+p_{n} = \frac{\binom{2k}{k}}{2^{2k}}.
+\]
+
+\bigskip
+
+Lo cual lleva a:
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+$n$:     & 11          & 101        & 1.001       & 10.001 & 100.001 & 1.000,001 \\
+\midrule
+$p_n$: &  0.246   & 0.0796    &  0.0252    & 000798 & 0.00252  & 0.000798                               \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+
+Aunque las probabilidades son pequeñas, son más grandes
+de lo que la mayoría esperaría. Por ejemplo, si votan 100
+personas, la probabilidad de que Ud.\ sera la votante pivotal
+es de 8 por ciento. 
+
+\bigskip
+
+Usando la aproximación de Sterling,
+ $k! \sim \sqrt{2\pi}k^{k+\frac{1}{2}}e^{-k}$
+se muestra que
+$p_n \simeq 1/\sqrt{n\pi}$, 
+          donde $n$ es el número de votantes. 
+De modo que $p_n$ cae de manera
+relativamente lenta con $n$. 
+
+\bigskip
+
+No obstante lo anterior,  
+si votan 100.000 mil personas, la probabilidad de que usted
+sea el voto pivotal es de 0,25\% y si vota un millón es
+de 0,08\%, es decir, una en 1250. 
+\end{frame}
+
+\begin{frame}
+\frametitle{Comentarios}
+
+        Hemos supuesto que los votantes tienen la misma
+         probabilidad de votar por cualquiera de los dos
+         candidatos. 
+         
+         \bigskip
+         
+         ?`En qué dirección varían las probabilidades
+         calculadas (?`crecen?, ?`caen?) si
+         no se cumple este supuesto?
+         
+         \bigskip
+         
+         Una forma de resolver la paradoja de las votaciones
+         es notando que, aun si aceptamos que los votantes realizan
+         un análisis de costo-beneficio para decidir si
+         van a votar, emitir el voto pivotal no es el único
+         beneficio a considerar. ?`Puede listar otros beneficios?
+
+         \bigskip
+         
+         Finalmente notamos que aun cuando el modelo
+         de votante racional no explica por qué la gente
+         va a votar sí es un buen modelo para predecir
+         cuánta gente irá a votar. 
+\end{frame}
+
+\begin{frame}
+\frametitle{Los fósforos de Banach}
+
+Un fumador lleva dos cajas de fósforos para prender sus cigarrillos
+con objeto de que cuando se terminen los fósforos en una tenga
+fósforos en la otra y pueda fumar mientras va a comprar
+una nueva caja de fósforos. 
+
+\bigskip
+
+Suponga que 
+la fumadora parte con dos cajas de fósforos con 50 en cada una
+y que elige de cuál caja saca los fósforos al azar. 
+
+\bigskip
+
+?`Cuál es la probabiidad de que cuando se de
+cuenta de que una caja esta vacía la otra también esté vacía?
+\end{frame}
+
+\begin{frame}
+\frametitle{Solución}
+
+\begin{itemize}
+\item Espacio muestral: Todas las secuencias de 1s  y 2s, donde 1 indica que eligió
+la caja 1 y 2 que eligió la caja 2. Es un espacio equiprobable. 
+\item Casos posibles: $2^{100}$. 
+\item Casos favorables: La secuencia tiene exactamente 50 unos
+y 50 dos. En tal caso, al momento de sacar el fósforo 101, 
+la fumadora se da cuenta de que las dos cajas están vacías.
+El número de secuencias favorables es $\binom{100}{50}$. 
+\end{itemize}
+
+\bigskip
+
+Luego la probabilidad que nos piden es:
+\[
+p = \frac{\binom{100}{50}}{2^{100}} \simeq 0,08.
+\]
+
+\bigskip
+
+Feller, en su clásico libro de probabilidades,
+plantea este problema basado en el hábito
+de fumador del matemático Stefan Banach, 
+por eso se le conoce como el problema
+de los fósforos de Banach. 
+
+\bigskip
+
+Una variante acorde con los tiempos
+actuales reemplaza las cajas de fósforos
+por tarjetas Bip! del Transantiago.
+\end{frame}
+
+
+
+
+\end{document}

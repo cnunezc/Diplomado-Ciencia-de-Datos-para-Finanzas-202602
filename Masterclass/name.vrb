@@ -1,0 +1,10 @@
+\frametitle{Traducción del Árbol a Fórmulas de Excel}
+Para estudiantes sin experiencia en código, las ramas se transforman directamente en funciones lógicas anidadas:
+		\vspace{0.4cm}
+		\begin{exampleblock}{Fórmula para Oferta (Celda B10)}
+			\texttt{=SI(B5="Malo"; "NO"; SI(Y(B5="Bueno"; B6="Bajos"; B7="Altas"); "NO"; "SÍ"))}
+		\end{exampleblock}
+		\vspace{0.3cm}
+		\begin{exampleblock}{Fórmula para Monto (Celda B11)}
+			\texttt{=SI(B10="NO"; 0; SI(Y(B6="Altos"; B7="Bajas"); 10000000; SI(Y(B6="Altos"; B7="Altas"); 5000000; 3000000)))}
+		\end{exampleblock}
